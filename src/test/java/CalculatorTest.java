@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static UI.constants.Common.*;
+import static com.codeborne.selenide.Selenide.open;
+
 import static com.codeborne.selenide.appium.ScreenObject.screen;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,7 +15,9 @@ public class CalculatorTest extends BaseTest {
 
     @BeforeEach
     public void startDriver() {
-        baseScreen = screen(BaseScreen.class);
+        open();
+         baseScreen = screen(BaseScreen.class);
+
 
     }
 

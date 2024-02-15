@@ -1,4 +1,5 @@
 import UI.Listeners.AllureListener;
+import UI.providers.AndroidDriverProvider;
 import UI.screens.BaseScreen;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -11,19 +12,21 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 @ExtendWith(AllureListener.class)
 @ExtendWith(TextReportExtension.class)
 @Slf4j
 public class BaseTest {
 
-   public BaseScreen baseScreen;
+   public BaseScreen baseScreen = new BaseScreen();
 
     @BeforeAll
     public static void setup() {
-        SelenideAppium.launchApp();
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-        Configuration.browserSize = null;
+       SelenideAppium.launchApp();
+
+       SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+       // Configuration.browserSize = null;
     }
 
 
